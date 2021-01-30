@@ -12,6 +12,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductService } from './shared/product.service';
 import { LoginComponent } from './login/login.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     ProductsComponent,
     ProductComponent,
     ProductListComponent,
-    LoginComponent
+    LoginComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
