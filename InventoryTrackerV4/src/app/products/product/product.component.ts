@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+//product service need to be imported into a specific component.
 import { ProductService } from 'src/app/shared/product.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,63 +15,61 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductComponent implements OnInit {
 
   productId=0;
+  productForm : FormGroup;
   constructor(public service : ProductService, 
               public toastr: ToastrService,
               public activateRoute : ActivatedRoute,
-              public router: Router) {
+              public router: Router,
+              public formBuilder : FormBuilder
+              ) 
+              {         
+                this.productForm = formBuilder.group({
+                  productId : new FormControl(),
+                  productName : ['', [Validators.required, Validators.minLength(2),Validators.maxLength(50)]],
+                  productPrice : ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+                  productQuantity : ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+                  productCreatedDate : new FormControl()
+                });
+                
                 this.activateRoute.params.subscribe( data=> {
-                  this.productId = data.id;                
-                })
+                  this.productForm.value.productId = data.id;                                
+                  this.service.getProductById(this.service.formData.productId).subscribe(result=> {
+                    });
+                });
               }
 
     ngOnInit() {
-      this.resetForm();
+      this.productId = this.productForm.value.productId;
+     if(this.productForm.value!=null && this.productForm.value.productId>0)
+     {
+       this.productForm.patchValue(
+        {
+          productId : this.service.formData.productId,
+          productName: this.service.formData.productName , 
+          productQuantity :this.service.formData.productQuantity , 
+          productPrice :this.service.formData.productPrice
+         } );
+     }
+     else
+     {
+         this.productForm.reset();
+     }
     }
   
     clearForm()
     {
-      this.service.formData = 
-      {
-          productId : 0,
-          productName : '',
-          productPrice  : 0,
-          productQuantity : 0 ,
-          productCreatedDate : ''
-      }
-    }
-    resetForm(form? : NgForm) 
-    {
-      if(form!=null)    
-      form.resetForm();  
-      if(this.productId>0)
-      {
-        this.service.getProductById(this.productId);
-      }
-      else
-      {
-          this.service.formData = 
-          {
-              productId : 0,
-              productName : '',
-              productPrice  : 0,
-              productQuantity : 0 ,
-              productCreatedDate : ''
-          }
-      }
+      this.productForm.reset();
     }
   
-  
-    onSubmit(form: NgForm) {
-        this.insertUpdateRecord(form);
-        
+    onSubmit() {
+        this.insertUpdateRecord(this.productForm);        
     }
   
-    insertUpdateRecord(form: NgForm) {
+    insertUpdateRecord(form: FormGroup) {
       this.service.postProduct(form.value).subscribe(res => {
         this.toastr.success('Product save/update successfull', '');
-        this.resetForm(form);
+        this.productForm.reset();
         this.router.navigateByUrl('/products-list');
-        //this.service.refreshList();
       });
     }
 
