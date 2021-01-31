@@ -1,7 +1,7 @@
 # InventoryTrackerAngular9
 # Technology Stack
 
-    Angular 9 - Reactive forms
+    Angular 9 using Reactive forms
     HTML, CSS,Bootstrap
     .Net Web API
     Entity Framework
