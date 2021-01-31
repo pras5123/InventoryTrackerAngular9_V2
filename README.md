@@ -1,5 +1,5 @@
-#InventoryTrackerAngular9
-#Technology Stack
+# InventoryTrackerAngular9
+# Technology Stack
 
     Angular 9 - Reactive forms
     HTML, CSS,Bootstrap
@@ -7,7 +7,7 @@
     Entity Framework
     MSSQL Server
 
-#Architecture & Principles
+# Architecture & Principles
 
     N Teir Architecture : Business Layer , Data Access Layer and Presentation Layer
     Repository Pattern
