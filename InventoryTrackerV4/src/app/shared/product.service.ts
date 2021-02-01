@@ -30,6 +30,13 @@ export class ProductService {
     return this.http.get(this.rootURL+'/Inventory/GetProductById/'+id);
     //.toPromise().then(res => this.formData = res as Product);
   }
+
+
+  getproductSearchByString(searchText){
+    
+    return this.http.get(this.rootURL+'/Inventory/GetProductByName/'+searchText)
+    .toPromise().then(res => this.list = res as Product[]);
+  }
    
   //  putProduct(formData : Product){
   //    return this.http.post(this.rootURL+'/Inventory/AddUpdateProduct/'+formData.productId,formData);

@@ -20,6 +20,11 @@ namespace InventoryDL.Repository
             return Context.Set<TEntity>().Find(id);
         }
 
+
+        //public List<TEntity> GetEntityByName(string searchText)
+        //{
+        //    return Context.Set<TEntity>().All()
+        //}
         public List<TEntity> GetAll()
         {
             return Context.Set<TEntity>().ToList();

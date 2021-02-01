@@ -16,7 +16,7 @@ export class SecurityGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
       //Authentication and Authorization code here.
-      if(this.service.formLogin!=null &&  this.service.formLogin.userName=='admin' && this.service.formLogin.password=='admin')
+      if(this.service.formLogin != null && this.service.formLogin.userName == 'admin' && this.service.formLogin.password == 'admin')
       {
         return true;
       }
@@ -27,4 +27,8 @@ export class SecurityGuard implements CanActivate {
       }    
   }
   
+
+  // public isAuthenticated() {
+  //   return this.service.formLogin != null && this.service.formLogin.userName == 'admin' && this.service.formLogin.password == 'admin';
+  // }
 }

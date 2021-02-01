@@ -10,5 +10,6 @@ namespace InventoryDL.Repository
 {
     public interface IInventoryRepository : IRepository<Product>
     {
+        List<Product> GetProductByName(string searchText);
     }
 }

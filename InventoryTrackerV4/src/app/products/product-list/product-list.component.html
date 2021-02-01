@@ -2,6 +2,11 @@
     <h1 class="d-flex justify-content-center">Product List Screen</h1>
     <hr>   
 </div>
+
+Search  Product by name : 
+<input   [(ngModel)]="searchKeyword" (ngModelChange)="Search()"  class="form-control"   > 
+<hr>
+
   <table class="table table-hover">
     <thead class="thead-light">
       <th>Name</th>
@@ -14,11 +19,12 @@
       </th>
     </thead>
     <tbody>
-      <tr *ngFor="let prd of service.list">
+      <!-- | filter:searchedKeyword -->
+      <tr *ngFor="let prd of service.list  ">
         <td >{{prd.productName}}</td>
         <td >{{prd.productPrice}}</td>
         <td >{{prd.productQuantity}}</td>
-        <td >{{prd.productCreatedDate}}</td>
+        <td >{{prd.productCreatedDate | date: 'dd/MM/yyyy'}}</td>
         <td><button  (click)="populateForm(prd)"   class="btn btn-sm btn-outline-success">Update</button></td>
       </tr>
     </tbody>

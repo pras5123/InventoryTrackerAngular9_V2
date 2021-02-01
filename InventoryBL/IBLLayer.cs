@@ -13,5 +13,7 @@ namespace InventoryBL
         List<Product> GetAllProduct();
         Product GetProductById(int productId);
         bool AddUpdateProduct(Product product);
+
+        List<Product> GetProductByName(string searchText);
     }
 }

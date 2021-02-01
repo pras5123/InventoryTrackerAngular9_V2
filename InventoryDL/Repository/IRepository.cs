@@ -13,5 +13,6 @@ namespace InventoryDL.IRepository
         void Add(TEntity entity);
 
         void Update(TEntity entity);
+
     }
 }

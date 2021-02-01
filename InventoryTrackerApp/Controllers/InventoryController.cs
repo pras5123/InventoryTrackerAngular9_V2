@@ -53,6 +53,32 @@ namespace InventoryTrackerApp.Controllers
             return null;
         }
 
+
+
+        [HttpGet]
+        [Route("api/Inventory/GetProductByName/{searchText}")]
+        //https://localhost:44306/Api/Inventory/GetProductByName
+        public List<Product> GetProductByName(string  searchText)
+       {
+            try
+            {
+                return BLLayer.GetProductByName(searchText);
+            }
+            catch (Exception ex)
+            {
+                // Log exception here
+            }
+            finally
+            {
+
+            }
+            return null;
+        }
+
+
+
+
+
         [HttpPost]
         [Route("api/Inventory/AddUpdateProduct")]
         //https://localhost:44306/Api/Inventory/AddUpdateProduct

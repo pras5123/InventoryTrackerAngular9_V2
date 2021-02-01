@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="DBLayer.cs" />
     <Compile Include="IDBLayer.cs" />
-    <Compile Include="InventoryContext\InventoryContext.cs" />
     <Compile Include="InventoryContext\InventoryDB.cs" />
     <Compile Include="InventoryContext\Product.cs" />
     <Compile Include="Repository\IInventoryRepository.cs" />

@@ -76,5 +76,24 @@ namespace InventoryDL
             
            
         }
+
+
+        public List<Product> GetProductByName(string searchText)
+        {
+           try
+            {
+                var unitOfWork = new UnitOfWork(new InventoryDB());
+                return unitOfWork.Products.GetProductByName(searchText);
+            }
+            catch (Exception)
+            {
+                //Log exception here
+            }
+            finally
+            {
+
+            }
+            return null;
+        }
     }
 }

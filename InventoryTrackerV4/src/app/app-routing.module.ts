@@ -8,14 +8,15 @@ import { SecurityGuard } from './security.guard';
 
 
 const routes: Routes = [
-  //Default route to login implemtation
+  //Redirecting routes : Default route to login implemtation
   {path:'',redirectTo:'login',pathMatch:'full'},
-  // Component implementation. loading based on demand and using guards for the components.
+  // Lazy loading in Routing. loading based on demand + using guards for the components.
    {path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule), canActivate: [SecurityGuard]  },
    {path : 'products-list', component : ProductListComponent, canActivate: [SecurityGuard] },
+   //Parameterized routes
    {path : 'products/:id', component:ProductComponent, canActivate: [SecurityGuard] },
    {path : 'login', component : LoginComponent},
-   //Page not found implementation
+   //Wild Card routes : Page not found implementation
    {path : '**', component:PagenotfoundComponent}
 
 

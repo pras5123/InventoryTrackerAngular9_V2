@@ -29,5 +29,11 @@ namespace InventoryBL
         {
             return objDB.GetProductById(productId);
         }
+
+
+        public List<Product> GetProductByName(string searchText)
+        {
+            return objDB.GetProductByName(searchText);
+        }
     }
 }

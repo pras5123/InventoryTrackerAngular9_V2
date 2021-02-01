@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(form: NgForm) {
-      if(this.service.formLogin.userName=='admin' && this.service.formLogin.password=='admin')
+      if(this.service.formLogin != null && this.service.formLogin.userName == 'admin' && this.service.formLogin.password == 'admin')
       {
         this.router.navigateByUrl('/products-list');
       }
@@ -40,4 +40,8 @@ export class LoginComponent implements OnInit {
       }
       
   }
+
+
+
+ 
 }

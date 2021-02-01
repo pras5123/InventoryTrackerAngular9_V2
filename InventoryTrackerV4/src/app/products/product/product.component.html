@@ -36,7 +36,16 @@
           && productForm.get('productPrice').touched 
           && productForm.get('productPrice').hasError('required')">
           This field is required.           
-      </div>     
+      </div>   
+      
+      <div class="validation-error"
+        *ngIf="productForm.get('productPrice').invalid 
+          && productForm.get('productPrice').touched 
+          && productForm.get('productPrice').hasError('pattern')">
+          Only whole numbers are allowed.           
+      </div>   
+
+
       </div>
     </div>
     <div class="col-md-6 col-lg-3">
@@ -48,6 +57,13 @@
           && productForm.get('productQuantity').touched 
           && productForm.get('productQuantity').hasError('required')">
           This field is required.           
+      </div>  
+
+      <div class="validation-error"
+        *ngIf="productForm.get('productQuantity').invalid 
+          && productForm.get('productQuantity').touched 
+          && productForm.get('productQuantity').hasError('pattern')">
+          Only whole numbers are allowed          
       </div>  
       </div>
       <div class="form-group">
